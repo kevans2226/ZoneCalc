@@ -1,0 +1,21 @@
+table { max-width: 1024px; min-width: 200px; border-collapse: collapse; margin-top: 20px; margin-bottom: 20px; width: 100%; border: black solid thin;}
+.data { text-align: center; }
+.label { padding-right: 2px;  }
+
+.zone1, .zone3, .zone5 { background-color: skyblue; }
+.zone2 { }
+.zone4 {  }
+.zone6 { background-color: lightgrey;}
+.zone7 { background-color: darkgray; color: white; }
+.zone8 { background-color: gray; color: whitesmoke; }
+
+span { font-size: 15pt;}
+
+table th { border: black thin solid; }
+table td { border: black thin solid; }
+
+h1 { text-align: text; width: 100%; }
+
+#inputForm { 
+    flex: 1 auto; 
+}

@@ -1,0 +1,83 @@
+ 
+
+ <div style="text-align: center;">
+   <h1>Cycling Zones</h1>
+  <form class="parent">
+    <div id="inputForm">
+        <mat-form-field>
+            <input matInput placeholder="Average Power" [(ngModel)]="averagePower" 
+                  type="number" pattern="[0-9]*" name="averagePower" (input)="AveragePowerChange()" />
+        </mat-form-field>
+    
+        <mat-form-field>
+          <input matInput placeholder="Average Heart Rate" [(ngModel)]="averageHeartRate"
+              type="number" pattern="[0-9]*" name="averageHeartRate" />
+        </mat-form-field>
+    
+    </div>
+  </form>
+</div>
+
+  <div>
+
+  <table>
+    <thead> 
+      <tr>
+        <th colspan="2" style="text-align: left;">Functional Threashold Power</th>
+        <th class="data">{{ ftp }}</th>
+      </tr>
+      <tr>
+          <th colspan="2" style="text-align: left;">Lactate Threshold Heart Rate</th>
+          <th class="data">{{ averageHeartRate | number: '1.0-0' }}</th>
+      </tr>
+      <tr>
+        <th colspan="3">&nbsp;</th>
+      </tr>
+      <tr>
+        <th>Zone</th>
+        <th>Power</th>
+        <th>Heart Rate</th>
+      </tr>
+    </thead>
+    <tr class="zone1">
+      <td class="label">1 - Easy</td>
+      <td class="data">{{ zone1_min }} - {{ zone1_max }}</td>
+      <td class="data">{{ averageHeartRate * .60 | number: '1.0-0'}} - {{ (averageHeartRate) * .80 | number: '1.0-0' }}</td>      
+    </tr>
+    <tr class="zone2">
+        <td class="label">2 - Steady</td>
+        <td class="data">{{ zone2_min }} - {{ zone2_max }}</td>
+        <td class="data">{{ averageHeartRate * .80 | number: '1.0-0' }} - {{ averageHeartRate * .90  | number: '1.0-0'}}</td>
+    </tr>
+    <tr class="zone3">
+        <td class="label">3 - Mod-Hard</td>
+        <td class="data">{{ zone3_min }} - {{ zone3_max }}</td>
+        <td class="data">{{ averageHeartRate * .90 | number: '1.0-0' }} - {{ averageHeartRate * .95 | number: '1.0-0' }}</td>
+      </tr>
+    <tr class="zone4">
+        <td class="label">4 - Hard</td>
+        <td class="data">{{ zone4_min }} - {{ zone4_max }}</td>
+        <td class="data">{{ averageHeartRate * .95 | number: '1.0-0' }} - {{ averageHeartRate | number: '1.0-0' }}</td>
+      </tr>
+    <tr class="zone5">
+        <td class="label">5 - Very Hard</td>
+        <td class="data">{{ zone5_min }} - {{ zone5_max }}</td>
+        <td class="data">{{ averageHeartRate | number: '1.0-0' }} - {{ averageHeartRate * 1.1 | number: '1.0-0' }}</td>    
+    </tr>
+    <tr class="zone6">
+        <td class="label">AT/VO2max</td>
+        <td class="data">{{ zone6_min }} - {{ zone6_max }}</td>
+        <td class="data"></td>    
+    </tr>
+    <tr class="zone7">
+        <td class="label">Anaerobic capacity</td>
+        <td class="data">{{ zone7_min }} - {{ zone7_max }}</td>
+        <td class="data"></td>    
+    </tr>
+    <tr class="zone8">
+        <td class="label">Sprint Power</td>
+        <td class="data"> &gt; {{ zone8_min }} </td>
+        <td class="data"></td>    
+    </tr>
+  </table>
+</div>

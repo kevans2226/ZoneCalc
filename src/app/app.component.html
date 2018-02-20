@@ -1,0 +1,30 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-toolbar>
+    <span>{{ title }}</span>
+    <span class="example-fill-remaining-space"></span>
+    <button mat-raised-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="ItemClick('home')">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </button>
+        <button mat-menu-item (click)="ItemClick('cycle')">
+          <mat-icon>directions_bike</mat-icon>
+          <span>Cycle</span>
+        </button>
+      </mat-menu>
+  </mat-toolbar>
+<div id="main">
+  <div id="mainImage">
+    <a href="https://www.nolimitsendurance.com/">
+      <img src="./assets/Jason-No-Limits-Endurance-Coaching.jpg" width="375" height="175" />
+    </a>
+  </div>
+ 
+
+ <router-outlet></router-outlet>
+</div>
+
+

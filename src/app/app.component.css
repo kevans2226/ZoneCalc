@@ -1,0 +1,23 @@
+@media(max-width: 600px) {
+    #mainImage { display: none; }
+}
+
+#main { 
+    width: 100%; 
+    min-width: 300px; 
+    max-width: 800px; 
+    margin: 0 auto;
+}
+
+#mainImage {
+    width: 100%; 
+    text-align: center;
+}
+
+
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
