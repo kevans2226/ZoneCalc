@@ -1,0 +1,24 @@
+<div>
+  <ol>
+    <li>Do a good 20 minute warm up, you should mix in some 30-45 second sprint in your warm up</li>
+    <li>Hit lap on your computer, and go as hard as you can for 20 mminutes,
+        you should feel exhausted when then 20 minutes is up</li>
+    <li>Cool down</li>
+    <li>For the 20 minutes enter in your average power and average heart rate</li>
+  </ol>
+</div>
+
+<form> 
+  <mat-form-field>
+    <input matInput placeholder="Average Power" [(ngModel)]="averagePower" 
+          type="number" pattern="[0-9]*" name="averagePower"/>
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput placeholder="Average Heart Rate" [(ngModel)]="averageHeartRate"
+      type="number" pattern="[0-9]*" name="averageHeartRate" />
+</mat-form-field>
+
+
+  <button mat-button (click)="Calculate()">Calculate</button>
+</form>
