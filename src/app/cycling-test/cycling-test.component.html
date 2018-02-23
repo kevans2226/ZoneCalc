@@ -1,23 +1,56 @@
 <div>
-  <ol>
-    <li>Do a good 20 minute warm up, you should mix in some 30-45 second sprint in your warm up</li>
-    <li>Hit lap on your computer, and go as hard as you can for 20 mminutes,
-        you should feel exhausted when then 20 minutes is up</li>
-    <li>Cool down</li>
-    <li>For the 20 minutes enter in your average power and average heart rate</li>
-  </ol>
+  <p>
+    <b>NOTE:</b>
+    <br /> Do this on the trainer for the best results.
+  </p>
+  <p>
+    Do not eat anything heavy 2 hours before this test. You may eat a gel or sports drink 15 minutes prior to starting. This
+    is a good idea especially if you are doing this test first thing in the morning.
+  </p>
+  <p>
+    Do not do a hard workout the day before or after this test. Make sure you are well rested.
+  </p>
+  <p>
+    Take note of how you were feeling before, during and after the notes. Make a note of that in the post-activity comments.
+  </p>
+  
+    <h3>WARM UP</h3>
+    <ul>
+      <li>15 minutes easy spin</li>
+      <li>3 x 30 second sprints, with 30 second easy spin between</li>
+      <li>2 minutes steady spin</li>
+    </ul>
+  
+
+    <h3>MAIN</h3>
+    20 minute TT -
+    <ul>
+      <li>work at the best sustainable effort you can maintain for this time period.</li>
+      <li>Be sure to hit the lap button when you start and end this test. We will want the average and max HR and power information
+        from this segment. And, if you have power, we will want the average and max power info.</li>
+      <li>work on maintaining effort throughout this test.</li>
+      <li>It will be hard. Stick with it as best as you can.</li>
+      <li>Cadence is ideally 85-95 rpm.</li>
+    </ul>
+
+    <h3>COOL Down</h3>
+
+    10-15 minutes easy, easy spin to clear out the lactic acid
+
 </div>
 
-<form> 
-  <mat-form-field>
-    <input matInput placeholder="Average Power" [(ngModel)]="averagePower" 
-          type="number" pattern="[0-9]*" name="averagePower"/>
-</mat-form-field>
+Enter the average power and average heart rate below:
 
-<mat-form-field>
-  <input matInput placeholder="Average Heart Rate" [(ngModel)]="averageHeartRate"
-      type="number" pattern="[0-9]*" name="averageHeartRate" />
-</mat-form-field>
+<form>
+  <mat-form-field>
+    <input matInput placeholder="Average Power" [(ngModel)]="averagePower" type="number" pattern="[0-9]*" name="averagePower"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Average Heart Rate" [(ngModel)]="averageHeartRate" type="number" pattern="[0-9]*" name="averageHeartRate"
+    />
+  </mat-form-field>
 
 
   <button mat-button (click)="Calculate()">Calculate</button>
