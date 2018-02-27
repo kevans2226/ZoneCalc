@@ -2,12 +2,11 @@ table { max-width: 1024px; min-width: 200px; border-collapse: collapse; margin-t
 .data { text-align: center; }
 .label { padding-right: 2px;  }
 
-.zone1, .zone3, .zone5 { background-color: skyblue; }
-.zone2 { }
-.zone4 {  }
-.zone6 { background-color: lightgrey;}
-.zone7 { background-color: darkgray; color: white; }
-.zone8 { background-color: gray; color: whitesmoke; }
+tr.mainZones:nth-child(odd) { background-color: skyblue; }
+
+tr.extraZones:nth-child(3n+0) { background-color: lightgrey; }
+tr.extraZones:nth-child(3n+1) { background-color: darkgray; color: white; }
+tr.extraZones:nth-child(3n+2) { background-color: gray; color: whitesmoke; }
 
 span { font-size: 15pt;}
 
@@ -18,4 +17,16 @@ h1 { text-align: text; width: 100%; }
 
 #inputForm { 
     flex: 1 auto; 
+}
+
+.container { 
+    display: flex;
+}
+
+div.label { font-weight: bold; } 
+div.data { flex-grow: 8; text-align: right; padding-right:2px; padding: 2px;}
+
+
+@media(max-width: 550px) {
+    .percentage { display: none; }
 }

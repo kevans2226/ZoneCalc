@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { CyclingZones, ZoneRecord } from '../cycling-zone';
 @Component({
   selector: 'app-cycle',
   templateUrl: './cycle.component.html',
@@ -10,66 +10,87 @@ export class CycleComponent implements OnInit {
 
   public averagePower: number; 
   public averageHeartRate: number; 
+
+  public cyclingZones: CyclingZones; 
   
-  ///////////////////
-  // Power Setting //
-  /////////////////// 
   public ftpPercentage: number = .95;
+  public ftp: number = 0; 
+  public int: Array<number>; 
 
-  public ftp: number; 
-  
-  public zone1_min: number; 
-  public zone1_max: number; 
-  public zone2_min: number; 
-  public zone2_max: number;
-  public zone3_min: number; 
-  public zone3_max: number;
-  public zone4_min: number; 
-  public zone4_max: number;
-  public zone5_min: number; 
-  public zone5_max: number; 
-  public zone6_min: number; 
-  public zone6_max: number;
-  public zone7_min: number; 
-  public zone7_max: number;
-  public zone8_min: number;
+  // // public zone1_min: number = 0; 
+  // // public zone1_max: number = 0; 
+  // // public zone2_min: number = 0; 
+  // // public zone2_max: number = 0;
+  // // public zone3_min: number = 0; 
+  // // public zone3_max: number = 0;
+  // // public zone4_min: number = 0; 
+  // // public zone4_max: number = 0;
+  // // public zone5_min: number = 0; 
+  // // public zone5_max: number = 0; 
+  // // public zone6_min: number = 0; 
+  // // public zone6_max: number = 0;
+  // // public zone7_min: number = 0; 
+  // // public zone7_max: number = 0;
+  // // public zone8_min: number = 0;
 
+  // // public zone1_min_per: number = .449; 
+  // // public zone1_max_per: number = .550; 
+  // // public zone2_min_per: number = .559;
+  // // public zone2_max_per: number = .750;
+
+  // // public zone3_min_per: number = .759;
+  // // public zone3_max_per: number = .90;
+  // // public zone4_min_per: number = .909;
+  // // public zone4_max_per: number = 1.049;
+  // // public zone5_min_per: number = 1.059;
+  // // public zone5_max_per: number = 1.50;
+
+  // // public zone6_min_per: number = 1.06;
+  // // public zone6_max_per: number = 1.20;
+  // // public zone7_min_per: number = 1.21;
+  // // public zone7_max_per: number = 1.50;
+  // // public zone8_min_per: number = 1.51;  
+
+  // // public heart1_min: number = 0; 
+  // // public heart1_max: number = 0;
+  // // public heart2_min: number = 0; 
+  // // public heart2_max: number = 0;
+  // // public heart3_min: number = 0; 
+  // // public heart3_max: number = 0;
+  // // public heart4_min: number = 0; 
+  // // public heart4_max: number = 0;
+  // // public heart5_min: number = 0; 
+  // // public heart5_max: number = 0;
+
+  public
   constructor(private route: ActivatedRoute) { }
 
-  onHeartRate() { 
-    console.log(this.averageHeartRate); 
-  }
-
+  
   ngOnInit() {
-    this.route.params.subscribe(params => { 
-      this.averagePower = +params['power'];
-      this.averageHeartRate = +params['hr'];
+    this.cyclingZones = new CyclingZones(); 
 
-      this.AveragePowerChange(); 
+    this.route.params.subscribe(params => { 
+        this.averageHeartRate = +params['hr'];
+        this.averagePower = +params['power']
+      
+        var ftp = NaN; 
+        if(this.averagePower != NaN) ftp = this.averagePower * this.ftpPercentage;
+
+
+        this.cyclingZones.setFunctionalThreadhold(ftp); 
+        this.cyclingZones.setLacateThreshold(this.averageHeartRate); 
     })
+
   }
+
+  HeartRateChange() { 
+    this.cyclingZones.setLacateThreshold(this.averageHeartRate)
+  }
+
+
 
   AveragePowerChange() { 
-    this.ftp = Math.round(this.averagePower * this.ftpPercentage);
-
-    this.zone1_min = Math.floor(this.ftp * .45);
-    this.zone1_max = Math.round(this.ftp * .55);
-    this.zone2_min = Math.floor(this.ftp * .56);
-    this.zone2_max = Math.round(this.ftp * .75); 
-    this.zone3_min = Math.floor(this.ftp * .76); 
-    this.zone3_max = Math.round(this.ftp * .90); 
-    this.zone4_min = Math.floor(this.ftp * .91); 
-    this.zone4_max = Math.round(this.ftp * 1.05);
-    this.zone5_min = Math.floor(this.ftp * 1.06); 
-    this.zone5_max = Math.round(this.ftp * 1.50);  
-    
-    
-    this.zone6_min = Math.floor(this.ftp * 1.06); 
-    this.zone6_max = Math.round(this.ftp * 1.20); 
-    this.zone7_min = Math.round(this.ftp * 1.21); 
-    this.zone7_max = Math.round(this.ftp * 1.50); 
-    this.zone8_min = Math.round(this.ftp * 1.51); 
-
-    console.log(this.ftp); 
+    var ftp = Math.round(this.averagePower * this.ftpPercentage);
+    this.cyclingZones.setFunctionalThreadhold(ftp);
   }
 }
