@@ -1,0 +1,29 @@
+table { max-width: 1024px; min-width: 200px; border-collapse: collapse; margin-top: 20px; margin-bottom: 20px; width: 100%; border: black solid thin;}
+.data { text-align: center; }
+.label { padding-right: 2px;  }
+
+tr.mainZones:nth-child(odd) { background-color: skyblue; }
+
+
+span { font-size: 15pt;}
+
+table th { border: black thin solid; }
+table td { border: black thin solid; }
+
+h1 { text-align: text; width: 100%; }
+
+#inputForm { 
+    flex: 1 auto; 
+}
+
+.container { 
+    display: flex;
+}
+
+div.label { font-weight: bold; } 
+div.data { flex-grow: 8; text-align: right; padding-right:2px; padding: 2px;}
+
+
+@media(max-width: 550px) {
+    .percentage { display: none; }
+}

@@ -1,0 +1,37 @@
+<h3>WARM UP</h3>
+<ul>
+  <li>Run-walk 10-15 minutes easy. Once you feel fully warmed up, do the strides.</li>
+  <li>5 x 20 second strides, followed by 40 seconds easy jog between.<br>
+      <small> 
+      (*a stride is a quick burst of speed, where you accelerate for the first part, 
+       maintain almost max speed for the middle and gradually decelerate for the remainder. 
+       You should concentrate on good form and fast feet)
+      </small></li>
+</ul>
+<h3>THE ASSESSMENT</h3>
+  <ul>
+    <li>
+      Immediately following the warmup, you will run for 20 minutes at the fastest pace you can sustain 
+  for this duration. This should be about 80-90% of your max effort. It will be hard. Stay strong!
+  It is better to find the rhythm in the first few minutes and make sure the effort is sustainable 
+  than it is to start off too hard and fade.  Hit the lap timer when you start and end this segment.
+    </li>
+  </ul>
+<h3>COOL DOWN</h3>
+<ul>
+  <li>
+    Walk EASY for 10 minutes
+  </li>
+</ul>
+
+<form>
+    <mat-form-field>
+      <input matInput placeholder="Average Heart Rate" [(ngModel)]="averageHeartRate" 
+            type="number" pattern="[0-9]*" name="averageHeartRate"
+      />
+    </mat-form-field>
+  
+  
+    <button mat-button (click)="Calculate()">Calculate</button>
+  </form>
+

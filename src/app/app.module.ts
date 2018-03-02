@@ -9,7 +9,9 @@ import { AppComponent } from './app.component';
 import { CycleComponent } from './cycle/cycle.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { CyclingTestComponent } from './cycling-test/cycling-test.component'; 
+import { CyclingTestComponent } from './cycling-test/cycling-test.component';
+import { RunningTestComponent } from './running-test/running-test.component';
+import { RunComponent } from './run/run.component'; 
 
 const appRoutes: Routes = [
   { path: 'cycle', component: CycleComponent },
@@ -17,6 +19,9 @@ const appRoutes: Routes = [
   { path: 'cycle/:power', component: CycleComponent },
   { path: 'cycle/:power/:hr', component: CycleComponent },
   { path: 'cycle-test', component: CyclingTestComponent },
+  { path: 'running-test', component: RunningTestComponent },
+  { path: 'run', component: RunComponent },
+  { path: 'run/:hr', component: RunComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
@@ -26,6 +31,8 @@ const appRoutes: Routes = [
     CycleComponent,
     HomeComponent,
     CyclingTestComponent,
+    RunningTestComponent,
+    RunComponent,
   ],
   imports: [
     FormsModule, 

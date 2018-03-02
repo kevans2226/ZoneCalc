@@ -1,0 +1,36 @@
+<div style="text-align: center;">
+    <h1>Running Zones</h1>
+   <form class="parent">
+     <div id="inputForm">
+     
+         <mat-form-field>
+           <input matInput placeholder="Average Heart Rate" [(ngModel)]="averageHeartRate"
+               type="number" pattern="[0-9]*" name="averageHeartRate" (input)="HeartRateChange()" />
+         </mat-form-field>
+     
+     </div>
+   </form>
+ </div>
+
+
+ <div class="container">
+    <div style="font-weight: bold;">Lactate Threshold Heart Rate</div>
+    <div class="data">{{ runningZone.lacateThreashold }}</div>
+</div>
+
+<table>
+    <thead> 
+      <tr>
+        <th>Zone</th>
+        <th>Heart Rate</th>
+        <th class="percentage">% of LTHR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let z of runningZone.zones' class="mainZones">
+        <td class="label">{{z.name}}</td>
+        <td class="data">{{z.heartRate.min}} - {{z.heartRate.max}}</td>
+        <td class="data percentage"> {{z.heartRate.percentMin | percent }} - {{ z.heartRate.percentMax | percent }}</td>
+      </tr>
+    </tbody>
+  </table>
