@@ -24,6 +24,3 @@ div.label { font-weight: bold; }
 div.data { flex-grow: 8; text-align: right; padding-right:2px; padding: 2px;}
 
 
-@media(max-width: 550px) {
-    .percentage { display: none; }
-}
