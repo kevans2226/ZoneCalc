@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatInputModule, MatFormFieldModule, MatMenuModule, MatIconModule, MatToolbarModule, MatButtonModule } from '@angular/material';
+import { MatInputModule, MatFormFieldModule, MatMenuModule, MatIconModule, 
+         MatToolbarModule, MatButtonModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CdkTableModule} from '@angular/cdk/table';
 
@@ -11,7 +12,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CyclingTestComponent } from './cycling-test/cycling-test.component';
 import { RunningTestComponent } from './running-test/running-test.component';
-import { RunComponent } from './run/run.component'; 
+import { RunComponent } from './run/run.component';
+import { SwimmingTestComponent } from './swimming-test/swimming-test.component';
+import { SwimComponent } from './swim/swim.component';
+import { TransformToTime } from './transform-to-time'; 
 
 const appRoutes: Routes = [
   { path: 'cycle', component: CycleComponent },
@@ -22,6 +26,9 @@ const appRoutes: Routes = [
   { path: 'running-test', component: RunningTestComponent },
   { path: 'run', component: RunComponent },
   { path: 'run/:hr', component: RunComponent },
+  { path: 'swimming-test', component: SwimmingTestComponent },
+  { path: 'swim', component: SwimComponent },
+  { path: 'swim/:measurement/:swim1/:swim2/:swim3', component: SwimComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
@@ -33,6 +40,9 @@ const appRoutes: Routes = [
     CyclingTestComponent,
     RunningTestComponent,
     RunComponent,
+    SwimmingTestComponent,
+    SwimComponent,
+    TransformToTime
   ],
   imports: [
     FormsModule, 
@@ -43,6 +53,8 @@ const appRoutes: Routes = [
     MatIconModule, 
     MatToolbarModule,
     MatButtonModule,
+    MatOptionModule,
+    MatSelectModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only

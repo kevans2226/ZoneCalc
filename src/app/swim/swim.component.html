@@ -1,0 +1,61 @@
+<form>
+    <div class="container">
+     <div class="item">
+       <mat-form-field>
+         <input matInput placeholder="Interval 1 (0:00.00)" [(ngModel)]="swim1" 
+                type="text" [pattern]="timePattern" name="swim1"  />
+       </mat-form-field>
+       <br />
+     </div>
+ 
+     <div class="item"> 
+       <mat-form-field>
+         <input matInput placeholder="Interval 2 (0:00.00)" [(ngModel)]="swim2" 
+                type="text" [pattern]="timePattern" name="swim2" />
+       </mat-form-field>
+     </div>
+     <div class="item">
+       <mat-form-field>
+           <input matInput placeholder="Interval 3 (0:00.00)" [(ngModel)]="swim3" 
+                  type="text" [pattern]="timePattern" name="swim3" />
+       </mat-form-field>
+     </div>
+   </div>
+   <div class="container">
+    <div class="item">
+      <mat-form-field>
+          <mat-select [(value)]="measurements" (change)="ChangeMeasurement()">
+            <mat-option value="yards" ng-selected="true">Yards</mat-option>
+            <mat-option value="meters">Meters</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="item">
+      <button mat-button (click)="Calculate()">Calculate</button>
+    </div>
+  </div>
+ </form>
+
+ <div *ngIf="showTable">
+  <div class="container">
+      <div style="font-weight: bold;">Threshold</div>
+      <div class="data">{{ zones.threshold | transferToTime }}&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;<small>100 {{measurements}}</small></div>
+  </div>
+  <br />
+  <table>
+    <thead> 
+      <tr>
+        <th>Zone</th>
+        <th>Pace</th>
+        <th class="percentage">% of Threshold</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let z of zones.zoneRecord' class="mainZones">
+        <td class="label">{{z.name}}</td>
+        <td class="data">{{z.zone.min | transferToTime }} - {{z.zone.max | transferToTime }}&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;<small>100 {{measurements}}</small></td>
+        <td class="data percentage"> {{z.zone.percentMin | percent }} - {{ z.zone.percentMax | percent }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

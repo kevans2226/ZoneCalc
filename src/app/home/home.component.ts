@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   }
 
   itemClick(route: string) { 
+    console.log(route); 
     this.router.navigate(["/" + route]);
   }
 }

@@ -1,0 +1,57 @@
+<h3>WARM UP</h3>
+<ul>
+  <li>200 easy, 10s rest</li>
+  <li>2 x 150 done as: 50 swim, 50 kick, 50 swim, 10s rest</li>
+  <li>2 x 100 easy, 10s rest</li>
+  <li>2 x 150 done as: 50 easy, 50 steady, 50 mod-hard, 15s rest</li>
+</ul>
+
+<h3>MAIN</h3>
+<ul>
+  <li>3 x 300 time trial, 30s rest<br />
+   <em>hit lap button for each set so we can get the split time for each 300.</em><br />
+    <em>Go as fast as you can, swimming at an even intensity throughout. 
+        Try not to start off too hard and fade. Stay consistent. Stay strong!</em>
+  </li>
+</ul>
+<h3>COOL DOWN</h3>
+<ul>
+<li>2 x 200 easy. You can alternate free/back by 50 if you like.</li>  
+</ul>
+
+<form>
+    <div class="container">
+     <div class="item">
+       <mat-form-field>
+         <input matInput placeholder="Interval 1 (0:00.00)" [(ngModel)]="swim1" type="text" [pattern]="timePattern" name="swim1"/>
+       </mat-form-field>
+       <br />
+     </div>
+ 
+     <div class="item"> 
+       <mat-form-field>
+         <input matInput placeholder="Interval 2 (0:00.00)" [(ngModel)]="swim2" type="text" [pattern]="timePattern" name="swim2"/>
+       </mat-form-field>
+     </div>
+     <div class="item">
+       <mat-form-field>
+           <input matInput placeholder="Interval 3 (0:00.00)" [(ngModel)]="swim3" type="text" [pattern]="timePattern" name="swim3"/>
+       </mat-form-field>
+     </div>
+   </div>
+   <div class="container">
+      <div class="item">
+          <mat-form-field>
+              <mat-select [(value)]="measurements">
+                <mat-option value="yards">Yards</mat-option>
+                <mat-option value="meters">Meters</mat-option>
+              </mat-select>
+            </mat-form-field>
+      </div>
+
+      <div class="item">
+          <button mat-button (click)="Calculate()">Calculate</button>
+      </div>
+   </div>
+ </form>
+  
