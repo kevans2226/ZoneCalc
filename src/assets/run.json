@@ -5,5 +5,12 @@
         { "name": "3 - Mod Hard", "min": 0.900, "max": 0.949 },
         { "name": "4 - Hard", "min": 0.954, "max": 1.000 },
         { "name": "5 - Very Hard", "min": 1.004, "max": 1.10 }
+    ],
+    "Pace": [
+      { "name": "1 - Easy", "min": 1.29, "max": 3.00 },
+      { "name": "2 - Steady", "min": 1.14, "max": 1.29 }, 
+      { "name": "3 - Mod Hard", "min": 1.06, "max": 1.13 }, 
+      { "name": "4 - Hard", "min": 0.99, "max": 1.05 }
+      { "name": "5 - Very Hard", "min": 0.90, "max": 1.00 }
     ]
 }
