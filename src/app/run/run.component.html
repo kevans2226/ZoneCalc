@@ -19,18 +19,18 @@
 </div>
 
 <table>
-    <thead> 
-      <tr>
-        <th>Zone</th>
-        <th>Heart Rate</th>
-        <th class="percentage">% of LTHR</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor='let z of runningZone.zones' class="mainZones">
-        <td class="label">{{z.name}}</td>
-        <td class="data">{{z.heartRate.min}} - {{z.heartRate.max}}</td>
-        <td class="data percentage"> {{z.heartRate.percentMin | percent }} - {{ z.heartRate.percentMax | percent }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead> 
+    <tr>
+      <th>Zone</th>
+      <th>Heart Rate</th>
+      <th class="percentage">% of LTHR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let z of runZone.HeartRate' class="mainZones">
+      <td class="label">{{z.name}}</td>
+      <td class="data">{{z.minCalc}} - {{z.maxCalc}}</td>
+      <td class="data percentage"> {{z.min | percent }} - {{ z.max | percent }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ZoneNumber } from '../zone-number';
 import { ActivatedRoute } from '@angular/router';
+import { SwimmingX } from '../data-interfaces';
+import { ZonesService } from '../zones.service';
 
 @Component({
   selector: 'app-swim',
@@ -14,10 +15,12 @@ export class SwimComponent implements OnInit {
   public measurements: string = "yards";
   public showTable: boolean = false; 
   public timePattern: string = "^(0?[1-9]|[1-9][0-9]):[0-5]{1}[0-9]{1}(\\.\\d{1,2})?"; 
-  public zones: SwimZones = new SwimZones();
-  public zonesYards: SwimZones = new SwimZones(); 
-  public zonesMeters: SwimZones = new SwimZones(); 
-  constructor(public route: ActivatedRoute) { }
+  
+  public swimZones: SwimmingX; 
+  public avgYards: number;
+  public avgMeters: number; 
+
+  constructor(public route: ActivatedRoute, private zoneService: ZonesService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => { 
@@ -25,13 +28,19 @@ export class SwimComponent implements OnInit {
       if(params["swim1"] != undefined) this.swim1 = params["swim1"]; 
       if(params["swim2"] != undefined) this.swim2 = params["swim2"]; 
       if(params["swim3"] != undefined) this.swim3 = params["swim3"]; 
-      if(this.swim1 != undefined && this.swim2 != undefined && this.swim3 != undefined) this.Calculate(); 
+      
     });
+
+    this.zoneService.getSwimming().subscribe(result => { 
+      this.swimZones = new SwimmingX(result); 
+      console.log(this.swimZones); 
+      if(this.swim1 != undefined && this.swim2 != undefined && this.swim3 != undefined) this.Calculate();  
+    })
+    
   }
 
   public change(time: string) : void {
-    console.log(time);
-    this.Calculate();
+    if(this.showTable) this.Calculate();
   }
 
   public Calculate() : number { 
@@ -40,6 +49,9 @@ export class SwimComponent implements OnInit {
     var invalidTest = [false, false, false]; 
     var seconds =  [0 ,0,0] ; 
 
+    ///////////////////////
+    // Validate the Time //
+    ///////////////////////     
     for(var x in stringInput) { 
       if(!testTimeString.test(stringInput[x])) {
         console.log("Swim " + (x+1) + " Failed Validation");
@@ -53,71 +65,47 @@ export class SwimComponent implements OnInit {
       }
     }
 
-    for(var x in invalidTest) if (invalidTest[x]) return; 
-
+    for(var x in invalidTest) if (invalidTest[x]) return;
+    /////////////////////////////////////////// 
+    // IF you are here we validate the times //
+    /////////////////////////////////////////// 
+    ///////////////////////////
+    // Find the Average time //
+    ///////////////////////////
     var avg = 0; 
     seconds.forEach(a => { avg += a; } ); 
     avg /= seconds.length; 
 
     avg /= 3; 
 
-    var exactSeconds = (avg % 60);
+    ///////////////////////
+    // Set the threshold //
+    ///////////////////////
+    this.swimZones.setThreshold(avg);
+    console.log(this.swimZones); 
 
-    var sec = Math.round(exactSeconds * 100) / 100;
-    var minute = (avg - exactSeconds) / 60; 
-    var time = minute + ":" + sec; 
-    console.log("Seconds: " + sec + " Minute: " + minute + " time: " + time); 
-
-    this.zones.setThreshold(avg);
-
-    if(this.measurements == "yards") {
-      var meters = avg / .94144; 
-      console.log(meters + " " + avg); 
-      this.zonesYards = this.zones;
-      this.zonesMeters.setThreshold(meters);  
+    //////////////////////////////////////////////////////
+    // set the average yard property, and average meter //
+    //////////////////////////////////////////////////////
+    if(this.measurements == "yards") { 
+      this.avgYards = avg;
+      this.avgMeters = avg / .94144; 
     }
     else { 
-      this.zonesMeters = this.zones; 
-      this.zonesYards.setThreshold(avg * .94144);
+      this.avgMeters = avg; 
+      this.avgYards = avg * .94144; 
     }
+
     this.showTable = true;
   }
 
   public ChangeMeasurement(): void { 
     console.log(this.measurements); 
     
-    if(this.measurements == "meters") this.zones = this.zonesMeters; 
-    else this.zones = this.zonesYards; 
+    if(this.measurements == "meters") this.swimZones.setThreshold(this.avgMeters); 
+    else this.swimZones.setThreshold(this.avgYards); 
   
-    console.log(this.zones.threshold);
+    console.log(this.swimZones.threshold);
   }
-}
-
-export class SwimZones { 
-  public zoneRecord: SwimRecordZone[]; 
-  public threshold: number; 
-
-  constructor() { 
-    this.zoneRecord = new Array<SwimRecordZone>(); 
-
-    this.zoneRecord.push(new SwimRecordZone("Easy", new ZoneNumber(1.15, 1.21)));
-    this.zoneRecord.push(new SwimRecordZone("Steady", new ZoneNumber(1.10, 1.14))); 
-    this.zoneRecord.push(new SwimRecordZone("Mod Hard", new ZoneNumber(1.05, 1.05))); 
-    this.zoneRecord.push(new SwimRecordZone("Hard", new ZoneNumber(1.00, 1.04))); 
-    this.zoneRecord.push(new SwimRecordZone("Very Hard", new ZoneNumber(.75, .98))); 
-  }
-
-  public setThreshold(seconds: number) : void { 
-    this.threshold = seconds; 
-
-    this.zoneRecord.forEach(result => { 
-        result.zone.setMinMax(this.threshold); 
-    });
-  }
-}
-
-export class SwimRecordZone { 
-  constructor(public name: string, public zone: ZoneNumber) {   }
-  
 }
 

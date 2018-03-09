@@ -1,8 +1,10 @@
 # ZoneCalc
-Calculate Power Zones, Heart Rate Zones, and Speed Zones for Triathlon
+Calculate Power Zones, Heart Rate Zones, and Pace Zones for Triathlon
 
 
 # Application
+0.1.0  -  Create Running and Swimming Zones page.  Also extracted all the zone data into .json files that can be edited by the user.  The home page sorts the sports in the "triathlon" order (swim, bike, run).  On the Swim Zone page you can enter a time in either yards or meters, and then convert your time to the opposite.
+
 0.0.1  -  Created Cycling Zones
 
 # Build

@@ -38,23 +38,24 @@
  <div *ngIf="showTable">
   <div class="container">
       <div style="font-weight: bold;">Threshold</div>
-      <div class="data">{{ zones.threshold | transferToTime }}&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;<small>100 {{measurements}}</small></div>
+      <div class="data">{{ swimZones.threshold | transferToTime }}&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;<small>100 {{measurements}}</small></div>
   </div>
   <br />
+
   <table>
-    <thead> 
-      <tr>
-        <th>Zone</th>
-        <th>Pace</th>
-        <th class="percentage">% of Threshold</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor='let z of zones.zoneRecord' class="mainZones">
-        <td class="label">{{z.name}}</td>
-        <td class="data">{{z.zone.min | transferToTime }} - {{z.zone.max | transferToTime }}&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;<small>100 {{measurements}}</small></td>
-        <td class="data percentage"> {{z.zone.percentMin | percent }} - {{ z.zone.percentMax | percent }}</td>
-      </tr>
-    </tbody>
-  </table>
+      <thead> 
+        <tr>
+          <th>Zone</th>
+          <th>Pace</th>
+          <th class="percentage">% of Threshold</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let z of swimZones.Pace' class="mainZones">
+          <td class="label">{{z.name}}</td>
+          <td class="data">{{z.minCalc | transferToTime }} - {{z.maxCalc | transferToTime }}&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;<small>100 {{measurements}}</small></td>
+          <td class="data percentage"> {{z.min | percent }} - {{ z.max | percent }}</td>
+        </tr>
+      </tbody>
+    </table>
 </div>

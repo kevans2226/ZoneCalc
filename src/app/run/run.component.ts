@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RunningZones } from '../running-zones';
 import { ActivatedRoute } from '@angular/router';
+import { RunningX } from '../data-interfaces';
+import { ZonesService } from '../zones.service';
 
 @Component({
   selector: 'app-run',
@@ -9,21 +10,26 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RunComponent implements OnInit {
   public averageHeartRate: number; 
-  public runningZone: RunningZones; 
-  constructor(public route: ActivatedRoute) { }
+  public runZone: RunningX; 
+  constructor(public route: ActivatedRoute, private zoneService: ZonesService) { }
 
-  ngOnInit() {
-    this.runningZone = new RunningZones(); 
-
+  ngOnInit() { 
     this.route.params.subscribe(params => { 
       this.averageHeartRate = +params['hr'];
- 
-      this.runningZone.setLacateThreshold(this.averageHeartRate);  
     });
+
+    this.zoneService.getRunning().subscribe(result => { 
+      this.runZone = new RunningX(result); 
+      console.log(this.runZone); 
+      this.runZone.setThreshold(this.averageHeartRate); 
+    }); 
+
+
   }
 
   public HeartRateChange() : void { 
-    this.runningZone.setLacateThreshold(this.averageHeartRate); 
+    this.runZone.setThreshold(this.averageHeartRate); 
+
   }
 
 }

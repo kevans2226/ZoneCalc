@@ -16,6 +16,8 @@ import { RunComponent } from './run/run.component';
 import { SwimmingTestComponent } from './swimming-test/swimming-test.component';
 import { SwimComponent } from './swim/swim.component';
 import { TransformToTime } from './transform-to-time'; 
+import { ZonesService } from './zones.service';
+import { HttpClientModule } from "@angular/common/http";
 
 const appRoutes: Routes = [
   { path: 'cycle', component: CycleComponent },
@@ -55,12 +57,13 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatOptionModule,
     MatSelectModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [ ZonesService ],
   bootstrap: [AppComponent],
   exports: [MatFormFieldModule]
 })

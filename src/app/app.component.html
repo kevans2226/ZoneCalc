@@ -10,6 +10,10 @@
           <mat-icon>home</mat-icon>
           <span>Home</span>
         </button>
+        <button mat-menu-item (click)="ItemClick('swimming-test')">
+            <mat-icon>pool</mat-icon>
+            <span>Swimming</span>
+          </button>
         <button mat-menu-item (click)="ItemClick('cycle-test')">
           <mat-icon>directions_bike</mat-icon>
           <span>Cycle</span>
@@ -18,10 +22,7 @@
           <mat-icon>directions_run</mat-icon>
           <span>Run</span>
         </button>
-        <button mat-menu-item (click)="ItemClick('swimming-test')">
-            <mat-icon>pool</mat-icon>
-            <span>Swimming</span>
-          </button>
+
       </mat-menu>
   </mat-toolbar>
 <div id="main">

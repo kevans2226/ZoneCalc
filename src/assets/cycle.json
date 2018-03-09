@@ -1,0 +1,19 @@
+{
+    "Power": [
+        {"name": "1 - Easy", "min": 0.449, "max": 0.550 },
+        {"name": "2 - Steady", "min": 0.559, "max": 0.750},
+        {"name": "3 - Mod Hard", "min": 0.759, "max": 0.900 },
+        {"name": "4 - Hard", "min": 0.909, "max": 1.049 },
+        {"name": "5 - Very Hard", "min": 1.059, "max": 1.500 },
+        {"name": "AT/VO2max", "min": 1.059, "max": 1.20 },
+        {"name": "Anaerobic Capacity", "min": 1.21, "max": 1.50 },
+        {"name": "Sprint Power",  "min": 1.50, "max": 3.00 }
+    ],
+    "HeartRate": [ 
+        {"name": "1 - Easy", "min": 0.600, "max": 0.800 }, 
+        {"name": "2 - Steady", "min": 0.804, "max": 0.8999 },
+        {"name": "3 - Mod Hard", "min": 0.908, "max": 0.949 },
+        {"name": "4 - Hard", "min": 0.9549, "max": 1.000 }, 
+        {"name": "5 - Very Hard", "min": 1.004, "max": 1.100 }
+    ]
+}

@@ -1,0 +1,9 @@
+{
+    "Pace": [
+        { "name": "Easy", "min": 1.15, "max": 1.21 }, 
+        { "name": "Steady", "min": 1.10, "max": 1.14 },
+        { "name": "Mod Hard", "min": 1.05, "max": 1.05 },
+        { "name": "Hard", "min": 1.00, "max": 1.04 }, 
+        { "name": "Very Hard", "min": 0.75, "max": 0.98} 
+    ]
+}
