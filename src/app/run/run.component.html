@@ -1,3 +1,4 @@
+<div id="form" *ngIf="!loading">
 <div style="text-align: center;">
     <h1>Running Zones</h1>
    <form class="parent">
@@ -15,7 +16,7 @@
 
  <div class="container">
     <div style="font-weight: bold;">Lactate Threshold Heart Rate</div>
-    <div class="data">{{ runningZone.lacateThreashold }}</div>
+    <div class="data">{{ runZone.threshold }}</div>
 </div>
 
 <table>
@@ -34,3 +35,7 @@
     </tr>
   </tbody>
 </table>
+</div>
+<div class="loading" *ngIf="loading"> 
+  Loading Please Wait....
+</div>

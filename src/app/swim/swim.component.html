@@ -1,3 +1,4 @@
+<div id="form" *ngIf="!loading">
 <form>
     <div class="container">
      <div class="item">
@@ -58,4 +59,9 @@
         </tr>
       </tbody>
     </table>
+</div>
+</div>
+
+<div id="loading" *ngIf="loading">
+  Loading Please Wait.....
 </div>

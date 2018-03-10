@@ -11,6 +11,7 @@ import { ZonesService } from '../zones.service';
 export class RunComponent implements OnInit {
   public averageHeartRate: number; 
   public runZone: RunningX; 
+  public loading: boolean; 
   constructor(public route: ActivatedRoute, private zoneService: ZonesService) { }
 
   ngOnInit() { 
@@ -18,10 +19,14 @@ export class RunComponent implements OnInit {
       this.averageHeartRate = +params['hr'];
     });
 
+    this.loading = true; 
     this.zoneService.getRunning().subscribe(result => { 
       this.runZone = new RunningX(result); 
-      console.log(this.runZone); 
-      this.runZone.setThreshold(this.averageHeartRate); 
+      console.log(this.runZone);
+
+      if(isNaN(this.averageHeartRate)) this.runZone.setThreshold(this.averageHeartRate);
+      
+      this.loading = false;  
     }); 
 
 

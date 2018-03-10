@@ -15,7 +15,7 @@ export class SwimComponent implements OnInit {
   public measurements: string = "yards";
   public showTable: boolean = false; 
   public timePattern: string = "^(0?[1-9]|[1-9][0-9]):[0-5]{1}[0-9]{1}(\\.\\d{1,2})?"; 
-  
+  public loading: boolean; 
   public swimZones: SwimmingX; 
   public avgYards: number;
   public avgMeters: number; 
@@ -23,6 +23,7 @@ export class SwimComponent implements OnInit {
   constructor(public route: ActivatedRoute, private zoneService: ZonesService) { }
 
   ngOnInit() {
+    this.loading = true; 
     this.route.params.subscribe(params => { 
       if(params['measurement'] != undefined) this.measurements = params['measurement'];  
       if(params["swim1"] != undefined) this.swim1 = params["swim1"]; 
@@ -35,6 +36,10 @@ export class SwimComponent implements OnInit {
       this.swimZones = new SwimmingX(result); 
       console.log(this.swimZones); 
       if(this.swim1 != undefined && this.swim2 != undefined && this.swim3 != undefined) this.Calculate();  
+      this.loading = false;
+    }, error => { 
+      console.log(error); 
+      this.loading = false;
     })
     
   }
