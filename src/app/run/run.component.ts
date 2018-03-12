@@ -24,7 +24,7 @@ export class RunComponent implements OnInit {
       this.runZone = new RunningX(result); 
       console.log(this.runZone);
 
-      if(isNaN(this.averageHeartRate)) this.runZone.setThreshold(this.averageHeartRate);
+      if(!isNaN(this.averageHeartRate)) this.runZone.setThreshold(this.averageHeartRate);
       
       this.loading = false;  
     }); 

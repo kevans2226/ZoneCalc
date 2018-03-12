@@ -85,7 +85,7 @@ export class CyclingX implements ICycling {
 }
 
 export class RunningX implements IRunning {
-    HeartRate: IZone[];
+    HeartRate: ZoneX[];
     threshold: number;
 
     constructor(data: IRunning) { 
@@ -99,7 +99,7 @@ export class RunningX implements IRunning {
     setThreshold(threshold: number): void {
         if(!isNaN(threshold)) {
             this.threshold = threshold; 
-
+            console.log(this.threshold); 
             this.HeartRate.forEach(h => { 
                 h.calculate(this.threshold); 
             });
