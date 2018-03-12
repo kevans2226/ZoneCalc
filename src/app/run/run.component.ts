@@ -34,7 +34,6 @@ export class RunComponent implements OnInit {
 
   public HeartRateChange() : void { 
     this.runZone.setThreshold(this.averageHeartRate); 
-
   }
 
 }
