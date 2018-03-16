@@ -82,8 +82,8 @@ export class CycleComponent implements OnInit {
                       powerMax: (isNaN(power.maxCalc) ? "" : power.maxCalc),
                       powerMinPercent: power.min,
                       powerMaxPercent: power.max, 
-                      hrMin: (isNaN(heartRate.minCalc) ? "" : power.minCalc), 
-                      hrMax: (isNaN(heartRate.maxCalc) ? "" : power.maxCalc),
+                      hrMin: (isNaN(heartRate.minCalc) ? "" : heartRate.minCalc), 
+                      hrMax: (isNaN(heartRate.maxCalc) ? "" : heartRate.maxCalc),
                       hrMinPercent: heartRate.min, 
                       hrMaxPercent: heartRate.max,
                       class: "mainZones" });
