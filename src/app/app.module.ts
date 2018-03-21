@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule, MatFormFieldModule, MatMenuModule, MatIconModule, 
-         MatToolbarModule, MatButtonModule, MatOptionModule, MatSelectModule } from '@angular/material';
+         MatToolbarModule, MatButtonModule, MatOptionModule, MatSelectModule, 
+         MatAccordion, MatExpansionModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CdkTableModule} from '@angular/cdk/table';
 
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatButtonModule,
     MatOptionModule,
-    MatSelectModule,
+    MatSelectModule, 
+    MatExpansionModule,
     HttpClientModule,
     RouterModule.forRoot(
       appRoutes,

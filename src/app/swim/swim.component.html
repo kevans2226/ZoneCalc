@@ -1,39 +1,55 @@
 <div id="form" *ngIf="!loading">
 <form>
+    
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="showInput">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Interval Times
+        </mat-panel-title>
+        <mat-panel-description>
+          Enter in your interval times
+        </mat-panel-description>
+      </mat-expansion-panel-header>
     <div class="container" >
-     <div class="item" *ngIf="showInput">
+     <div class="item">
        <mat-form-field>
          <input matInput placeholder="Interval 1 (0:00.00)" [(ngModel)]="swim1" 
                 type="text" [pattern]="timePattern" name="swim1"  />
        </mat-form-field>
-       <br />
      </div>
  
-     <div class="item" *ngIf="showInput"> 
+     <div class="item"> 
        <mat-form-field>
          <input matInput placeholder="Interval 2 (0:00.00)" [(ngModel)]="swim2" 
                 type="text" [pattern]="timePattern" name="swim2" />
        </mat-form-field>
      </div>
-     <div class="item" *ngIf="showInput">
+
+     <div class="item">
        <mat-form-field>
            <input matInput placeholder="Interval 3 (0:00.00)" [(ngModel)]="swim3" 
                   type="text" [pattern]="timePattern" name="swim3" />
        </mat-form-field>
      </div>
+    </div>
+    </mat-expansion-panel>
+    </mat-accordion>
 
-    <div class="item">
-      <mat-form-field>
-          <mat-select [(value)]="measurements" (change)="ChangeMeasurement()">
-            <mat-option value="yards" ng-selected="true">Yards</mat-option>
-            <mat-option value="meters">Meters</mat-option>
-          </mat-select>
-        </mat-form-field>
+
+    <div class="container">
+      <div class="item">
+        <mat-form-field>
+            <mat-select [(value)]="measurements" (change)="ChangeMeasurement()">
+              <mat-option value="yards" ng-selected="true">Yards</mat-option>
+              <mat-option value="meters">Meters</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+      <div class="item" *ngIf="showInput">
+        <button mat-button (click)="Calculate()">Calculate</button>
+      </div>
     </div>
-    <div class="item" *ngIf="showInput">
-      <button mat-button (click)="Calculate()">Calculate</button>
-    </div>
-  </div>
  </form>
 
  <div *ngIf="showTable">
