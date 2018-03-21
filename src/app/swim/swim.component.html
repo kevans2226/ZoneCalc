@@ -1,7 +1,7 @@
 <div id="form" *ngIf="!loading">
 <form>
-    <div class="container">
-     <div class="item">
+    <div class="container" >
+     <div class="item" *ngIf="showInput">
        <mat-form-field>
          <input matInput placeholder="Interval 1 (0:00.00)" [(ngModel)]="swim1" 
                 type="text" [pattern]="timePattern" name="swim1"  />
@@ -9,13 +9,13 @@
        <br />
      </div>
  
-     <div class="item"> 
+     <div class="item" *ngIf="showInput"> 
        <mat-form-field>
          <input matInput placeholder="Interval 2 (0:00.00)" [(ngModel)]="swim2" 
                 type="text" [pattern]="timePattern" name="swim2" />
        </mat-form-field>
      </div>
-     <div class="item">
+     <div class="item" *ngIf="showInput">
        <mat-form-field>
            <input matInput placeholder="Interval 3 (0:00.00)" [(ngModel)]="swim3" 
                   type="text" [pattern]="timePattern" name="swim3" />
@@ -30,7 +30,7 @@
           </mat-select>
         </mat-form-field>
     </div>
-    <div class="item">
+    <div class="item" *ngIf="showInput">
       <button mat-button (click)="Calculate()">Calculate</button>
     </div>
   </div>

@@ -14,6 +14,7 @@ export class SwimComponent implements OnInit {
   public swim3: string; 
   public measurements: string = "yards";
   public showTable: boolean = false; 
+  public showInput: boolean = true;
   public timePattern: string = "^(0?[1-9]|[1-9][0-9]):[0-5]{1}[0-9]{1}(\\.\\d{1,2})?"; 
   public loading: boolean; 
   public swimZones: SwimmingX; 
@@ -26,9 +27,9 @@ export class SwimComponent implements OnInit {
     this.loading = true; 
     this.route.params.subscribe(params => { 
       if(params['measurement'] != undefined) this.measurements = params['measurement'];  
-      if(params["swim1"] != undefined) this.swim1 = params["swim1"]; 
-      if(params["swim2"] != undefined) this.swim2 = params["swim2"]; 
-      if(params["swim3"] != undefined) this.swim3 = params["swim3"]; 
+      if(params["swim1"] != undefined) { this.swim1 = params["swim1"]; this.showInput = false; } else { this.showInput = true; } 
+      if(params["swim2"] != undefined) { this.swim2 = params["swim2"]; this.showInput = false; } else { this.showInput = true; } 
+      if(params["swim3"] != undefined) { this.swim3 = params["swim3"]; this.showInput = false; } else { this.showInput = true; } 
       
     });
 
