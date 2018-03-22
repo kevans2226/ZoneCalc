@@ -15,7 +15,7 @@ table { max-width: 1024px; min-width: 200px; border-collapse: collapse; margin-t
 .data { text-align: center; }
 .label { padding-right: 2px;  }
 
-tr.mainZones:nth-child(odd) { background-color: skyblue; }
+tr.mainZones:nth-child(odd) { background-color: skyblue; -webkit-print-color-adjust:exact; }
 
 
 span { font-size: 15pt;}
@@ -31,3 +31,8 @@ h1 { text-align: text; width: 100%; }
 
 div.label { font-weight: bold; } 
 div.data { flex-grow: 8; text-align: right; padding-right:2px; padding: 2px;}
+
+@media print { 
+    #inputForm { display: none; }
+    #tableMain { width: 400px; margin: auto;}
+}

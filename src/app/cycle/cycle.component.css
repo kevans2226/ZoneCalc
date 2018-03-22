@@ -2,11 +2,11 @@ table { max-width: 1024px; min-width: 200px; border-collapse: collapse; margin-t
 .data { text-align: center; }
 .label { padding-right: 2px;  }
 
-tr.mainZones:nth-child(odd) { background-color: skyblue; }
+tr.mainZones:nth-child(odd) { background-color: skyblue; -webkit-print-color-adjust:exact; }
 
-tr.extraZones:nth-child(3n+0) { background-color: lightgrey; }
-tr.extraZones:nth-child(3n+1) { background-color: darkgray; color: white; }
-tr.extraZones:nth-child(3n+2) { background-color: gray; color: whitesmoke; }
+tr.extraZones:nth-child(3n+0) { background-color: lightgrey; -webkit-print-color-adjust:exact; }
+tr.extraZones:nth-child(3n+1) { background-color: darkgray; color: white; -webkit-print-color-adjust:exact; }
+tr.extraZones:nth-child(3n+2) { background-color: gray; color: whitesmoke; -webkit-print-color-adjust:exact; }
 
 span { font-size: 15pt;}
 
@@ -29,4 +29,8 @@ div.data { flex-grow: 8; text-align: right; padding-right:2px; padding: 2px;}
 
 @media(max-width: 550px) {
     .percentage { display: none; }
+}
+
+@media print { 
+    #inputForm { display: none; }
 }

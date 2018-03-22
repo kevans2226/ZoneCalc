@@ -1,6 +1,6 @@
 <div id="form" *ngIf="!loading">
 <form>
-    
+  <div id="inputForm">
   <mat-accordion>
     <mat-expansion-panel [expanded]="showInput">
       <mat-expansion-panel-header>
@@ -50,9 +50,15 @@
         <button mat-button (click)="Calculate()">Calculate</button>
       </div>
     </div>
+    
+ 
+ 
+  </div>
  </form>
 
- <div *ngIf="showTable">
+
+
+ <div *ngIf="showTable" id="tableMain">
   <div class="container">
       <div style="font-weight: bold;">Threshold</div>
       <div class="data">{{ swimZones.threshold | transferToTime }}&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;<small>100 {{measurements}}</small></div>

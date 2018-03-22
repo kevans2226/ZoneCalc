@@ -2,6 +2,13 @@
     #mainImage { display: none; }
 }
 
+@media print { 
+    #toolbar { display: none; }
+    #mainImage { display: inherit; }
+}
+
+
+
 #main { 
     width: 100%; 
     min-width: 300px; 
