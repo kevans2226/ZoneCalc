@@ -38,37 +38,21 @@ export class SwimmingTestComponent implements OnInit {
     })
     
     var average = totalSecond / count; 
-    average /= 3;
+    average /= 3;                        // Since the swimmer swam 300 and we want them by the 100's
     console.log(average); 
 
     this.threshold = new TransformToTime().transform(average, [""]); 
   }
 
   public Calculate() : void { 
-    // // var testTimeString = new RegExp(this.timePattern); 
-    // // var stringInput = [this.swim1, this.swim2, this.swim3 ]; 
-    // // var invalidTest = [false, false, false]; 
-    // // var seconds =  [0 ,0,0] ; 
-
-    // // for(var x in stringInput) { 
-    // //   if(!testTimeString.test(stringInput[x])) {
-    // //     console.log("Swim " + (x+1) + " Failed Validation");
-    // //     invalidTest[x] = true;
-    // //     return;  
-    // //   } 
-    // //   else {
-    // //     invalidTest[x] = false;
-
-    // //     var temp = stringInput[x].split(':'); 
-    // //     seconds[x] =  parseFloat(temp[1]) + (parseInt(temp[0]) * 60)
-    // //   }
-    // // }
-
+    
     console.log("Good So Far");
 
     var temp = this.threshold.split(':'); 
     var seconds = parseFloat(temp[1]) + (parseInt(temp[0]) * 60)
-    
+
+    seconds = Math.round(seconds * 100) / 100
+
     this.router.navigate(["/swim/" + this.measurements + "/" + seconds]);
   }
 }
