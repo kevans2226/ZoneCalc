@@ -20,29 +20,52 @@ export class SwimComponent implements OnInit {
   public swimZones: SwimmingX; 
   public avgYards: number;
   public avgMeters: number; 
-
+  public thresholdSet: boolean = false; 
   constructor(public route: ActivatedRoute, private zoneService: ZonesService) { }
 
   ngOnInit() {
     this.loading = true; 
+ 
     this.route.params.subscribe(params => { 
+
       if(params['measurement'] != undefined) this.measurements = params['measurement'];  
-      if(params["swim1"] != undefined) { this.swim1 = params["swim1"]; this.showInput = false; } else { this.showInput = true; } 
-      if(params["swim2"] != undefined) { this.swim2 = params["swim2"]; this.showInput = false; } else { this.showInput = true; } 
-      if(params["swim3"] != undefined) { this.swim3 = params["swim3"]; this.showInput = false; } else { this.showInput = true; } 
-      
+      if(params['threshold'] != undefined) {
+        // Calculate Populate the Table // 
+        if(this.measurements == "yards") {
+          this.avgYards = parseFloat(params["threshold"]); 
+          this.avgMeters = this.avgYards / .94144; 
+        }
+        else {
+          this.avgMeters = parseFloat(params["threshold"])
+          this.avgYards = this.avgMeters * .94144; 
+        }
+
+        console.log('Average Yards ' + this.avgYards);
+
+         this.showTable = true;  
+         this.showInput = false;
+      } 
+      else { 
+        this.showInput = true;  
+        
+        if(params["swim1"] != undefined) { this.swim1 = params["swim1"]; this.showInput = false; } else { this.showInput = true; } 
+        if(params["swim2"] != undefined) { this.swim2 = params["swim2"]; this.showInput = false; } else { this.showInput = true; } 
+        if(params["swim3"] != undefined) { this.swim3 = params["swim3"]; this.showInput = false; } else { this.showInput = true; } 
+      }
+
+      console.log(this.swimZones); 
     });
 
     this.zoneService.getSwimming().subscribe(result => { 
-      this.swimZones = new SwimmingX(result); 
-      console.log(this.swimZones); 
+      this.swimZones = new SwimmingX(result);  
+
       if(this.swim1 != undefined && this.swim2 != undefined && this.swim3 != undefined) this.Calculate();  
+      else if (this.avgMeters != undefined && this.avgYards != undefined) this.ChangeMeasurement();
       this.loading = false;
     }, error => { 
       console.log(error); 
       this.loading = false;
     })
-    
   }
 
   public change(time: string) : void {

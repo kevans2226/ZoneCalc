@@ -23,19 +23,24 @@
     <div class="container">
      <div class="item">
        <mat-form-field>
-         <input matInput placeholder="Interval 1 (0:00.00)" [(ngModel)]="swim1" type="text" [pattern]="timePattern" name="swim1"/>
+         <input matInput placeholder="Interval 1 (0:00.00)" [(ngModel)]="swim1" type="text" [pattern]="timePattern" name="swim1" (change)="ChangeTime(swim1, 0)"/>
        </mat-form-field>
-       <br />
      </div>
  
      <div class="item"> 
        <mat-form-field>
-         <input matInput placeholder="Interval 2 (0:00.00)" [(ngModel)]="swim2" type="text" [pattern]="timePattern" name="swim2"/>
+         <input matInput placeholder="Interval 2 (0:00.00)" [(ngModel)]="swim2" type="text" [pattern]="timePattern" name="swim2" (change)="ChangeTime(swim2, 1)"/>
        </mat-form-field>
      </div>
      <div class="item">
        <mat-form-field>
-           <input matInput placeholder="Interval 3 (0:00.00)" [(ngModel)]="swim3" type="text" [pattern]="timePattern" name="swim3"/>
+          <input matInput placeholder="Interval 3 (0:00.00)" [(ngModel)]="swim3" type="text" [pattern]="timePattern" name="swim3" (change)="ChangeTime(swim3, 2)"/>
+       </mat-form-field>
+     </div>
+
+     <div class="item">
+       <mat-form-field>
+         <input matInput placeholder="Threshold Time" [(ngModel)]="threshold" type="text" [pattern]="timePattern" name="threshold" />
        </mat-form-field>
      </div>
 

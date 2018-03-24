@@ -32,6 +32,7 @@ const appRoutes: Routes = [
   { path: 'swimming-test', component: SwimmingTestComponent },
   { path: 'swim', component: SwimComponent },
   { path: 'swim/:measurement/:swim1/:swim2/:swim3', component: SwimComponent },
+  { path: 'swim/:measurement/:threshold', component: SwimComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
