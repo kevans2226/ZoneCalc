@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CyclingTestComponent implements OnInit {
   public averagePower: number; 
   public averageHeartRate: number; 
+  public ftp: number; 
 
   constructor(private router: Router) { }
 
@@ -19,5 +20,13 @@ export class CyclingTestComponent implements OnInit {
     console.log(this.averageHeartRate + " " + this.averagePower); 
 
     this.router.navigate(["/cycle/" + this.averagePower + "/" + this.averageHeartRate]);
+  }
+
+  averagePowerChange() { 
+    this.ftp = Math.round(this.averagePower * .95); 
+  }
+
+  averageFtpChange() { 
+    this.averagePower = Math.round(this.ftp / .95); 
   }
 }

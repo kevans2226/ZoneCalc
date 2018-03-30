@@ -19,7 +19,8 @@ export class CycleComponent implements OnInit {
   public ftp: number = 0; 
   public int: Array<number>; 
 
-  public
+  public showInput: boolean = true; 
+
   constructor(private route: ActivatedRoute, private zonesService: ZonesService) { }
 
   
@@ -29,8 +30,14 @@ export class CycleComponent implements OnInit {
         this.averageHeartRate = +params['hr'];
         this.averagePower = +params['power']
       
-        var ftp = NaN; 
-        if(this.averagePower != NaN) ftp = this.averagePower * this.ftpPercentage;
+        this.showInput = true;
+        console.log("Heart Rate: " + this.averageHeartRate); 
+        console.log("Show Input: " + this.showInput) ;
+        if((!isNaN(this.averagePower)) || (!isNaN(this.averageHeartRate))) { 
+          this.ftp = this.averagePower * this.ftpPercentage;
+          this.showInput = false; 
+          console.log("Show Input: " + this.showInput) ;
+        }
     }); 
 
     this.loading = true; 
@@ -38,8 +45,8 @@ export class CycleComponent implements OnInit {
     this.zonesService.getCycling().subscribe(result => {
       this.cyclingZone = new CyclingX(result);  
 
-      var ftp = this.averagePower * this.ftpPercentage
-      this.cyclingZone.setFtp(ftp); 
+      this.ftp = this.averagePower * this.ftpPercentage
+      this.cyclingZone.setFtp(this.ftp); 
       this.cyclingZone.setThreshold(this.averageHeartRate);
       this.loading = false;  
       this.CollectInformation();

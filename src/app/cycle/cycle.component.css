@@ -33,4 +33,5 @@ div.data { flex-grow: 8; text-align: right; padding-right:2px; padding: 2px;}
 
 @media print { 
     #inputForm { display: none; }
+    .InputSection { display: none; }
 }

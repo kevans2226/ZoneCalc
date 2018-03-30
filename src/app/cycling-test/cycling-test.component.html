@@ -44,7 +44,7 @@ Enter the average power and average heart rate below:
 <form>
   <mat-form-field>
     <input matInput placeholder="Average Power" [(ngModel)]="averagePower" type="number" pattern="[0-9]*" name="averagePower"
-    />
+     (change)="averagePowerChange()" />
   </mat-form-field>
 
   <mat-form-field>
@@ -52,6 +52,10 @@ Enter the average power and average heart rate below:
     />
   </mat-form-field>
 
+  <mat-form-field>
+    <input matInput placeholder="Functional Threashold Power (FTP)" [(ngModel)]="ftp" type="number" pattern="[0-9]*" name="ftp" 
+     (change)="averageFtpChange()" />
+  </mat-form-field>
 
   <button mat-button (click)="Calculate()">Calculate</button>
 </form>
