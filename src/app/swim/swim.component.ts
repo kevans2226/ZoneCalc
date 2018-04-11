@@ -21,6 +21,8 @@ export class SwimComponent implements OnInit {
   public avgYards: number;
   public avgMeters: number; 
   public thresholdSet: boolean = false; 
+  public showLength: boolean = false; 
+  public width: any; 
   constructor(public route: ActivatedRoute, private zoneService: ZonesService) { }
 
   ngOnInit() {

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule, MatFormFieldModule, MatMenuModule, MatIconModule, 
          MatToolbarModule, MatButtonModule, MatOptionModule, MatSelectModule, 
-         MatAccordion, MatExpansionModule } from '@angular/material';
+         MatAccordion, MatExpansionModule, MatCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CdkTableModule} from '@angular/cdk/table';
 
@@ -61,6 +61,7 @@ const appRoutes: Routes = [
     MatSelectModule, 
     MatExpansionModule,
     HttpClientModule,
+    MatCheckboxModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
