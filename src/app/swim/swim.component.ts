@@ -23,6 +23,8 @@ export class SwimComponent implements OnInit {
   public thresholdSet: boolean = false; 
   public showLength: boolean = false; 
   public width: any; 
+  public lengths: Array<number> = [25, 50, 75, 100, 150, 200, 300, 500, 600, 1000, 1500]
+
   constructor(public route: ActivatedRoute, private zoneService: ZonesService) { }
 
   ngOnInit() {

@@ -70,38 +70,44 @@
   </div>
   <br />
 
-  <table [style.width.px]="width">
+    <div *ngIf="!showLength">
+    <table [style.width.px]="width" class="ZoneTable">
       <thead> 
         <tr>
           <th>Zone</th>
-          <th *ngIf="showLength">25</th>
-          <th *ngIf="showLength">50</th>
-          <th *ngIf="(!showLength)">Pace</th><th *ngIf="showLength">100</th>
-          <th *ngIf="showLength">200</th>
-          <th *ngIf="showLength">300</th>
-          <th *ngIf="showLength">500</th>
-          
-          <th class="percentage" *ngIf="(!showLength)">% of Threshold</th>
+          <th>Pace</th>
+          <th class="percentage">% of Threshold</th>
 
         </tr>
       </thead>
       <tbody>
         <tr *ngFor='let z of swimZones.Pace' class="mainZones">
           <td class="label">{{z.name}}</td>
-          <td class="data" *ngIf="showLength">{{(z.minCalc * .25) | transferToTime }} - {{(z.maxCalc  * .25) | transferToTime }}</td>
-          <td class="data" *ngIf="showLength">{{(z.minCalc * .50) | transferToTime }} - {{(z.maxCalc * .50) | transferToTime }}</td>
           
           <td class="data">{{z.minCalc | transferToTime }} - {{z.maxCalc | transferToTime }}
-              <span *ngIf="(!showLength)">&nbsp;&nbsp;/&nbsp;&nbsp;<small>100 {{measurements}}</small></span>
+              <span>&nbsp;&nbsp;/&nbsp;&nbsp;<small>100 {{measurements}}</small></span>
           </td>
-          <td class="data" *ngIf="showLength">{{(z.minCalc * 2) | transferToTime }} - {{(z.maxCalc * 2) | transferToTime }}</td>
-          <td class="data" *ngIf="showLength">{{(z.minCalc * 3) | transferToTime }} - {{(z.maxCalc * 3) | transferToTime }}</td>
-          <td class="data" *ngIf="showLength">{{(z.minCalc * 5) | transferToTime }} - {{(z.maxCalc * 5) | transferToTime }}</td>
-          
-          <td class="data percentage" *ngIf="(!showLength)"> {{z.min | percent }} - {{ z.max | percent }}</td>
+          <td class="data percentage"> {{z.min | percent }} - {{ z.max | percent }}</td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div *ngIf="showLength" class="lengthTable">
+    <div class="row">
+      <div class="header cell">Length</div>
+      <div *ngFor="let z of swimZones.Pace" class="header cell" > 
+        {{z.name}}
+      </div>
+    </div>
+    <!-- 25 -->
+    <div class="row" *ngFor="let l of lengths">
+      <div class="data cell">{{l}}</div>
+      <div *ngFor="let z of swimZones.Pace" class="data cell">
+        {{(z.minCalc * (l / 100)) | transferToTime }} - {{(z.maxCalc  * (l / 100)) | transferToTime }}
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 
