@@ -32,11 +32,20 @@ h1 { text-align: text; width: 100%; }
 div.label { font-weight: bold; } 
 div.data { flex-grow: 8; text-align: right; padding-right:2px; padding: 2px;}
 
+
+@media print { 
+    #inputForm { display: none; }
+    #tableMain { width: 600px; margin: auto;}
+
+    .lengthTable > div.row > div.cell { width: 100px; }
+    .lengthTable { width: 500px; margin: auto;}
+}
+
 /* Length Table */ 
 .lengthTable { 
     display: table;
-    flex-direction: row;
-    flex-wrap: wrap;
+    margin: auto;
+    width: 800px;
 }
 
 .lengthTable > div.row { display: table-row; }
@@ -44,7 +53,6 @@ div.data { flex-grow: 8; text-align: right; padding-right:2px; padding: 2px;}
 
 .lengthTable > div.row > div.cell {
     display: table-cell;
-    width: 125px; 
     text-align: center;
     border: solid black thin;
 }
@@ -52,7 +60,3 @@ div.data { flex-grow: 8; text-align: right; padding-right:2px; padding: 2px;}
 .lengthTable div.header { font-weight:bold;}
 
 
-@media print { 
-    #inputForm { display: none; }
-    #tableMain { width: 800px; margin: auto;}
-}
