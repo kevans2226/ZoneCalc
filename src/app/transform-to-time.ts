@@ -13,8 +13,8 @@ export class TransformToTime implements PipeTransform {
     var sec = Math.round(exactSeconds * 100) / 100;
     
     var minute = (value - exactSeconds) / 60; 
-
-    var time = minute + ":" + (sec < 10 ? "0" + sec.toFixed(0) : sec.toFixed(0)); 
+    
+    var time = minute + ":" + (sec < 9.5 ? "0" + sec.toFixed(0) : sec.toFixed(0)); 
     // console.log("Value: " + value + " exactSeconds: " + exactSeconds + " Seconds to display: " + sec + " Minute: " + minute + " time: " + time);
     return time; 
   }
