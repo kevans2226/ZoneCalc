@@ -32,15 +32,6 @@ h1 { text-align: text; width: 100%; }
 div.label { font-weight: bold; } 
 div.data { flex-grow: 8; text-align: right; padding-right:2px; padding: 2px;}
 
-
-@media print { 
-    #inputForm { display: none; }
-    #tableMain { width: 600px; margin: auto;}
-
-    .lengthTable > div.row > div.cell { width: 100px; }
-    .lengthTable { width: 500px; margin: auto;}
-}
-
 /* Length Table */ 
 .lengthTable { 
     display: table;
@@ -57,6 +48,40 @@ div.data { flex-grow: 8; text-align: right; padding-right:2px; padding: 2px;}
     border: solid black thin;
 }
 
+.lengthTable > div.row > div.cell1 { 
+    display: table-cell;
+    text-align: center; 
+    border: solid black thin;
+}
+
 .lengthTable div.header { font-weight:bold;}
+
+@media print { 
+    #inputForm { display: none; }
+    #tableMain { width: 600px; margin: auto;}
+
+    .lengthTable > div.row > div.cell { width: 100px; }
+    .lengthTable { width: 500px; margin: auto;}
+}
+
+@media(max-width: 800px) {
+    .lengthTable > div.row > div.cell { 
+        width: 25px;
+        padding: 0px;
+        word-wrap: none;
+        font-size: 8pt;
+    }
+
+    div.cell1 { 
+        width: 5px;
+        padding: 0px;
+        word-wrap: none;
+        font-size: 8pt;
+    }
+
+    .lengthTable { width: 450px; }
+}
+
+
 
 

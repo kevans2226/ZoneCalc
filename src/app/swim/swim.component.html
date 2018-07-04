@@ -102,7 +102,7 @@
     </div>
     <!-- 25 -->
     <div class="row" *ngFor="let l of lengths">
-      <div class="data cell">{{l}}</div>
+      <div class="data cell1">{{l}}</div>
       <div *ngFor="let z of swimZones.Pace" class="data cell">
         {{(z.minCalc * (l / 100)) | transferToTime }} - {{(z.maxCalc  * (l / 100)) | transferToTime }}
       </div>
