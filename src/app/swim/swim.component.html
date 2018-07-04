@@ -66,7 +66,10 @@
  <div *ngIf="showTable" id="tableMain">
   <div class="container">
       <div style="font-weight: bold;">Threshold</div>
-      <div class="data">{{ swimZones.threshold | transferToTime }}&nbsp;&nbsp;/&nbsp;<small>100 {{measurements}}</small></div>
+      <div class="data">
+        {{ swimZones.threshold | transferToTime }}&nbsp;&nbsp;/&nbsp;
+        <small>100 {{measurements}}</small
+      ></div>
   </div>
   <br />
 
@@ -93,18 +96,20 @@
     </table>
   </div>
 
-  <div *ngIf="showLength" class="lengthTable">
-    <div class="row">
-      <div class="header cell">Length</div>
-      <div *ngFor="let z of swimZones.Pace" class="header cell" > 
-        {{z.name}}
+  <div class="container">
+    <div *ngIf="showLength" class="lengthTable">
+      <div class="row">
+        <div class="header cell">Length</div>
+        <div *ngFor="let z of swimZones.Pace" class="header cell" > 
+          {{z.name}}
+        </div>
       </div>
-    </div>
-    <!-- 25 -->
-    <div class="row" *ngFor="let l of lengths">
-      <div class="data cell1">{{l}}</div>
-      <div *ngFor="let z of swimZones.Pace" class="data cell">
-        {{(z.minCalc * (l / 100)) | transferToTime }} - {{(z.maxCalc  * (l / 100)) | transferToTime }}
+      <!-- 25 -->
+      <div class="row" *ngFor="let l of lengths">
+        <div class="data cell1">{{l}}</div>
+        <div *ngFor="let z of swimZones.Pace" class="data cell">
+          {{(z.minCalc * (l / 100)) | transferToTime }} - {{(z.maxCalc  * (l / 100)) | transferToTime }}
+        </div>
       </div>
     </div>
   </div>

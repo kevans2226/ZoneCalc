@@ -58,10 +58,10 @@ div.data { flex-grow: 8; text-align: right; padding-right:2px; padding: 2px;}
 
 @media print { 
     #inputForm { display: none; }
-    #tableMain { width: 600px; margin: auto;}
-
-    .lengthTable > div.row > div.cell { width: 100px; }
-    .lengthTable { width: 500px; margin: auto;}
+    #tableMain { width: 550px; margin: auto;}
+    .lengthTable { width: 550px; margin: auto;}
+    /*.lengthTable > div.row > div.cell { width: 100px; }*/
+    
 }
 
 @media(max-width: 800px) {
