@@ -40,7 +40,7 @@
     <div class="container">
       <div class="item">
         <mat-form-field>
-            <mat-select [(value)]="measurements" (change)="ChangeMeasurement()">
+            <mat-select [(value)]="measurements" (selectionChange)="ChangeMeasurement()">
               <mat-option value="yards" ng-selected="true">Yards</mat-option>
               <mat-option value="meters">Meters</mat-option>
             </mat-select>
