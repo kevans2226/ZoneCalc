@@ -71,7 +71,7 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true, relativeLinkResolution: 'legacy' } // <-- debugging purposes only
+      { enableTracing: true } // <-- debugging purposes only
  // <-- debugging purposes only
     )
   ],
