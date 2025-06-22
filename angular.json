@@ -107,7 +107,6 @@
       }
     }
   },
-  "defaultProject": "zone-calc",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
