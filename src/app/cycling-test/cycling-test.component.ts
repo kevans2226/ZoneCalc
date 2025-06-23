@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-cycling-test',
-  templateUrl: './cycling-test.component.html',
-  styleUrls: ['./cycling-test.component.css']
+    selector: 'app-cycling-test',
+    templateUrl: './cycling-test.component.html',
+    styleUrls: ['./cycling-test.component.css'],
+    standalone: false
 })
 export class CyclingTestComponent implements OnInit {
   public averagePower: number; 

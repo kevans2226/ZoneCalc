@@ -4,9 +4,10 @@ import { ZonesService } from '../zones.service';
 import { CyclingX } from '../data-interfaces';
 
 @Component({
-  selector: 'app-cycle',
-  templateUrl: './cycle.component.html',
-  styleUrls: ['./cycle.component.css']
+    selector: 'app-cycle',
+    templateUrl: './cycle.component.html',
+    styleUrls: ['./cycle.component.css'],
+    standalone: false
 })
 export class CycleComponent implements OnInit {
   public loading: boolean;
