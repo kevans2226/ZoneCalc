@@ -4,9 +4,10 @@ import { SwimmingX } from '../data-interfaces';
 import { ZonesService } from '../zones.service';
 
 @Component({
-  selector: 'app-swim',
-  templateUrl: './swim.component.html',
-  styleUrls: ['./swim.component.css']
+    selector: 'app-swim',
+    templateUrl: './swim.component.html',
+    styleUrls: ['./swim.component.css'],
+    standalone: false
 })
 export class SwimComponent implements OnInit {
   public swim1: string; 

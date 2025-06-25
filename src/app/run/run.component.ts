@@ -4,9 +4,10 @@ import { RunningX } from '../data-interfaces';
 import { ZonesService } from '../zones.service';
 
 @Component({
-  selector: 'app-run',
-  templateUrl: './run.component.html',
-  styleUrls: ['./run.component.css']
+    selector: 'app-run',
+    templateUrl: './run.component.html',
+    styleUrls: ['./run.component.css'],
+    standalone: false
 })
 export class RunComponent implements OnInit {
   public averageHeartRate: number; 

@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { TransformToTime } from '../transform-to-time';
 
 @Component({
-  selector: 'app-swimming-test',
-  templateUrl: './swimming-test.component.html',
-  styleUrls: ['./swimming-test.component.css']
+    selector: 'app-swimming-test',
+    templateUrl: './swimming-test.component.html',
+    styleUrls: ['./swimming-test.component.css'],
+    standalone: false
 })
 export class SwimmingTestComponent implements OnInit {
   public swim1: string; 
