@@ -25,7 +25,6 @@ import { SwimmingTestComponent } from './swimming-test/swimming-test.component';
 import { SwimComponent } from './swim/swim.component';
 import { TransformToTime } from './transform-to-time'; 
 import { ZonesService } from './zones.service';
-import { HttpClientModule } from "@angular/common/http";
 
 const appRoutes: Routes = [
   { path: 'cycle', component: CycleComponent },
@@ -67,7 +66,7 @@ const appRoutes: Routes = [
     MatOptionModule,
     MatSelectModule, 
     MatExpansionModule,
-    HttpClientModule,
+
     MatCheckboxModule,
     RouterModule.forRoot(
       appRoutes,
