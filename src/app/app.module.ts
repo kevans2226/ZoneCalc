@@ -25,6 +25,7 @@ import { SwimmingTestComponent } from './swimming-test/swimming-test.component';
 import { SwimComponent } from './swim/swim.component';
 import { TransformToTime } from './transform-to-time'; 
 import { ZonesService } from './zones.service';
+import { StopWatchComponent } from './stop-watch/stop-watch.component';
 
 const appRoutes: Routes = [
   { path: 'cycle', component: CycleComponent },
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
   { path: 'swim', component: SwimComponent },
   { path: 'swim/:measurement/:swim1/:swim2/:swim3', component: SwimComponent },
   { path: 'swim/:measurement/:threshold', component: SwimComponent },
+  { path: 'stop-watch', component: StopWatchComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
@@ -52,7 +54,8 @@ const appRoutes: Routes = [
     RunComponent,
     SwimmingTestComponent,
     SwimComponent,
-    TransformToTime
+    TransformToTime,
+    StopWatchComponent
   ],
   imports: [
     FormsModule, 
